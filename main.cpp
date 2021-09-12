@@ -3,15 +3,24 @@ using namespace std;
 
 int main(){
     
-    int zbir = 0;
-    int brojevi[] = {3, 5, 6, 7, 1, 2};
-    for (int i = 0; i < *(&brojevi + 1) - brojevi; i++)
-    {
-        zbir += brojevi[i];
-    }
-    cout << zbir;
-    
+    long long k;
+    cin >> k;
 
+    long long pocetak = 1;
+    long long brojElemenata = 1;
+
+    for (int i = 1; i < k; i++){
+        pocetak += brojElemenata;
+        brojElemenata += 2;
+    }
+
+    long long zbirRedaTrougla = 0;
+    for (long long i = pocetak; i < pocetak + brojElemenata; i++){
+        zbirRedaTrougla += i;
+    }
     
+    cout << zbirRedaTrougla << endl;
+   
+
     return 0;
 }
