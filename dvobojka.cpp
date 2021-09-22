@@ -3,26 +3,22 @@
 using namespace std;
  
  
-void segregateEvenOdd(int arr[], int size)
+void parNepar(int niz[], int velicina)
 {
-    /* Initialize left and right indexes */
-    int left = 0, right = size-1;
-    while (left < right)
+    int levo = 0, desno = velicina-1;
+    while (levo < desno)
     {
-        /* Increment left index while we see 0 at left */
-        while (arr[left] % 2 == 0 && left < right)
-            left++;
+        while (niz[levo] % 2 == 0 && levo < desno)
+            levo++;
  
-        /* Decrement right index while we see 1 at right */
-        while (arr[right] % 2 == 1 && left < right)
-            right--;
+        while (niz[desno] % 2 == 1 && levo < desno)
+            desno--;
  
-        if (left < right)
+        if (levo < desno)
         {
-            /* Swap arr[left] and arr[right]*/
-            swap(arr[left], arr[right]);
-            left++;
-            right--;
+            swap(niz[levo], niz[desno]);
+            levo++;
+            desno--;
         }
     }
 }
@@ -32,23 +28,23 @@ int main()
 {   
     int n;
     cin >> n;
-    int arr[n];
+    int niz[n];
     for(int i = 0; i < n; i++){
-        cin >> arr[i];
+        cin >> niz[i];
     }
-    int arr_size = sizeof(arr)/sizeof(arr[0]); 
+    int velicinaNiza = sizeof(niz)/sizeof(niz[0]); 
     int i = 0;
-    cout <<"Array before segregation ";
-    for (i = 0; i < arr_size; i++)
-        cout << arr[i] << " ";
+    cout <<"Niz pre promene ";
+    for (i = 0; i < velicinaNiza; i++)
+        cout << niz[i] << " ";
  
-    segregateEvenOdd(arr, arr_size);
+    parNepar(niz, velicinaNiza);
     
     cout << endl;
 
-    cout <<"Array after segregation ";
-    for (i = 0; i < arr_size; i++)
-        cout << arr[i] << " ";
+    cout <<"Niz nakon promene ";
+    for (i = 0; i < velicinaNiza; i++)
+        cout << niz[i] << " ";
  
     return 0;
 }
