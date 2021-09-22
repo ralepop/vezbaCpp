@@ -23,7 +23,6 @@ void parNepar(int niz[], int velicina)
     }
 }
  
-/* Driver code */
 int main()
 {   
     int n;
