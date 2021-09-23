@@ -1,60 +1,33 @@
-// 2 ZADATAK TROBOJKA
-
-
+// 4 ZADATAK PRVI KOJI NIJE DELJIV
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-vector<int> unosNiza(){
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++){ cin >> a[i]; }
-    return a;
-}
-
-
-void podelaNiza(vector<int>& niz, int A, int B){
-    int l = 0, i = 0, d = niz.size();
-    while(i < d){
-        if(niz[i] < A){
-            swap(niz[i++], niz[l--]);
-        }else if(niz[i] <= B){
-            i++;
-        }else{
-            swap(niz[i], niz[--d]);
-        }
-    }
-}
-
-void ispisNiza(const vector<int>& a, int A, int B){
-    int i = 0;
-
-    while(i < a.size() && a[i] < A){
-        cout << a[i++] << " ";
-    }
-    cout << endl;
-
-    while(i < a.size() && a[i] <= B){
-        cout << a[i++] << " ";
-    }
-    cout << endl;
-
-    while(i < a.size()){
-        cout << a[i++] << " ";
-    }
-    cout << endl;
-}
 
 int main(){
-    vector<int> a = unosNiza();
-    int A, B;
-    cin >> A >> B;
-    podelaNiza(a, A, B);
-    ispisNiza(a, A, B);
+
+    int n;
+    cin >> n;
+
+    vector<long long> a(n);
+    for(int i = 0; i < n; i++)
+        cin >> a[i];
+
+    long long k;
+
+    while(cin >> k){
+        int l = 0, d = n - 1;
+        while(l <= d){ // svi neispitani elementi
+            int s = l + (d - l) / 2;
+            if(a[s] % k != 0)
+                d = s - 1;
+            else
+                l = s + 1;
+        }
+        cout << l << '\n';
+    }
 
     return 0;
 }
