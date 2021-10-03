@@ -1,33 +1,29 @@
-// 4 ZADATAK PRVI KOJI NIJE DELJIV
-
 #include <iostream>
-#include <vector>
-
+#include <math.h>
 using namespace std;
 
+int main() {
+    
+    long n, i, zbirH = 0, zbirV = 0;
+    cin >> n >> i;
+    
 
-int main(){
-
-    int n;
-    cin >> n;
-
-    vector<long long> a(n);
-    for(int i = 0; i < n; i++)
-        cin >> a[i];
-
-    long long k;
-
-    while(cin >> k){
-        int l = 0, d = n - 1;
-        while(l <= d){ // svi neispitani elementi
-            int s = l + (d - l) / 2;
-            if(a[s] % k != 0)
-                d = s - 1;
-            else
-                l = s + 1;
-        }
-        cout << l << '\n';
+    // za horizontalu
+    long pocetakBrojanjaH = i * n;
+    long krajBrojanjaH = pocetakBrojanjaH + (n - 1); 
+    for(long a = pocetakBrojanjaH; a <= krajBrojanjaH; a++){
+        zbirH += a;
     }
+
+    // za vertikalu
+    long pocetakBrojanjaV = i;
+    long krajBrojanjaV = (pow(n, 2) - 1) - (n - i - 1);
+    for(long a = pocetakBrojanjaV; a <= krajBrojanjaV; a += n){
+        zbirV += a;
+
+    }
+
+    cout << zbirH << endl << zbirV;
 
     return 0;
 }
